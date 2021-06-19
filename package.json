@@ -1,0 +1,15 @@
+{
+  "name": "gameframework.eventsystem",
+  "displayName": "GF-EventSystem",
+  "version": "1.0.0",
+  "unity": "2020.3",
+  "unityRelease": "10f1",
+  "description": "EventSystem Of GameFramework",
+  "keywords": [
+    "gameframework",
+    "eventsystem"
+  ],
+  "license": "MIT",
+  "category": "GF",
+  "hideInEditor": false
+}
