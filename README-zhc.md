@@ -18,9 +18,9 @@ GameFramework框架事件系统
 
 然后在unity中依次打开 Window -> Package Manager -> Add package from git URL
 
-1. 该模块需要核心模块的支持，粘贴`https://github.com/shaun-he/GF-Core.git?path=./`，然后点击Add，并等待编译完成
+1. 该模块需要核心模块的支持，粘贴`https://github.com/shaun-he/GF-Core.git`，然后点击Add，并等待编译完成
 
-2. 下载事件模块，粘贴 `https://github.com/shaun-he/GF-EventSystem.git?path=./` ，点击Add添加，等待编译完成即可
+2. 下载事件模块，粘贴 `https://github.com/shaun-he/GF-EventSystem.git` ，点击Add添加，等待编译完成即可
 
 ### 通过本地安装
 
