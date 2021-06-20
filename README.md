@@ -18,7 +18,7 @@ Requires a version of unity that supports path query parameter for git packages 
 
 1. In Unity , Go to Window -> Package Manager -> Add package from git URL
 
-2. **This module relate on GF-Core , so you need to install GF-Core First.** , use the url  `https://github.com/shaun-he/GF-Core.git` , then click **Add** , and wait for complie finished.
+2. **This module depends on the GF-Core , so you need to install GF-Core First.** , use the url  `https://github.com/shaun-he/GF-Core.git` , then click **Add** , and wait for complie finished.
 
 3. Next , use the url `https://github.com/shaun-he/GF-EventSystem.git` , then click **Add** ,  wait for complie finished and done !
 
