@@ -50,7 +50,7 @@ And your **GF.EventSystem.asmdef** should look like this
 
 ## Usage
 
-You can found example in **Test** folder，drag **EventSystem** prefab in your scene which in Predayfabs folder ，then run，you should see the log `Test` in console window.
+You can found example in **Test** folder，drag **GFEventSystem** prefab in your scene which in Prefabs folder ，then run，you should see the log `Test` in console window.
 
 ```
 GFEventSystemComponent.Instance.Subscribe(EventId, EventHandler);

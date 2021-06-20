@@ -46,7 +46,7 @@ GameFramework框架事件系统
 
 ## 使用
 
-你可以在**Test**文件内找到示例，把Predayfabs文件夹里的**EventSystem**拖拽到你的场景内，然后运行，你应该会看到打印的字符`Test`
+你可以在**Test**文件内找到示例，把Prefabs文件夹里的**GFEventSystem**拖拽到你的场景内，然后运行，你应该会看到打印的字符`Test`
 
 ```
 GFEventSystemComponent.Instance.Subscribe(EventId, EventHandler);

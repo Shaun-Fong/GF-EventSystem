@@ -17,6 +17,8 @@ public class TestMonoBehaviour : MonoBehaviour
     {
         TestEventArgs args = e as TestEventArgs;
         Debug.Log(args.TestStr);
+        Debug.LogWarning(args.TestStr);
+        Debug.LogError(args.TestStr);
     }
 
 }
