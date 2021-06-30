@@ -1,27 +1,26 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using GF.EventSystem;
-
-public class TestEventArgs : GameEventArgs
+namespace GF.EventSystem.Test
 {
-
-    public static readonly int EventId = typeof(TestEventArgs).GetHashCode();
-
-    public override int Id => EventId;
-
-    public string TestStr;
-
-    public static TestEventArgs Create(string str)
+    public class TestEventArgs : GameEventArgs
     {
-        TestEventArgs args = new TestEventArgs();
-        args.TestStr = str;
-        return args;
-    }
 
-    public override void Clear()
-    {
-        TestStr = null;
+        public static readonly int EventId = typeof(TestEventArgs).GetHashCode();
+
+        public override int Id => EventId;
+
+        public string TestStr;
+
+        public static TestEventArgs Create(string str)
+        {
+            TestEventArgs args = new TestEventArgs();
+            args.TestStr = str;
+            return args;
+        }
+
+        public override void Clear()
+        {
+            TestStr = null;
+        }
+
     }
 
 }

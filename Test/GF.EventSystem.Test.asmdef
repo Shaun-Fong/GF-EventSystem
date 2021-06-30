@@ -1,0 +1,18 @@
+{
+    "name": "GF.EventSystem.Test",
+    "rootNamespace": "",
+    "references": [
+        "GUID:b21be9e6bbcfe134695f4a7c4191c763",
+        "GUID:ca962db621d4a61488551efbac1cbbdf",
+        "GUID:ec2086d841a4ac44387d251d9bd72cd2"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

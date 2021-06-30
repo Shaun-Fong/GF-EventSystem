@@ -11,45 +11,45 @@ namespace GF.EventSystem
 
         public static GFEventSystemComponent Instance;
 
-        private EventManager m_EventManager;
+        private IEventManager m_EventManager;
 
-        public int EventHandlerCount => ((IEventManager)m_EventManager).EventHandlerCount;
+        public int EventHandlerCount => m_EventManager.EventHandlerCount;
 
-        public int EventCount => ((IEventManager)m_EventManager).EventCount;
+        public int EventCount => m_EventManager.EventCount;
 
         public bool Check(int id, EventHandler<GameEventArgs> handler)
         {
-            return ((IEventManager)m_EventManager).Check(id, handler);
+            return m_EventManager.Check(id, handler);
         }
 
         public int Count(int id)
         {
-            return ((IEventManager)m_EventManager).Count(id);
+            return m_EventManager.Count(id);
         }
 
         public void Fire(object sender, GameEventArgs e)
         {
-            ((IEventManager)m_EventManager).Fire(sender, e);
+            m_EventManager.Fire(sender, e);
         }
 
         public void FireNow(object sender, GameEventArgs e)
         {
-            ((IEventManager)m_EventManager).FireNow(sender, e);
+            m_EventManager.FireNow(sender, e);
         }
 
         public void SetDefaultHandler(EventHandler<GameEventArgs> handler)
         {
-            ((IEventManager)m_EventManager).SetDefaultHandler(handler);
+            m_EventManager.SetDefaultHandler(handler);
         }
 
         public void Subscribe(int id, EventHandler<GameEventArgs> handler)
         {
-            ((IEventManager)m_EventManager).Subscribe(id, handler);
+            m_EventManager.Subscribe(id, handler);
         }
 
         public void Unsubscribe(int id, EventHandler<GameEventArgs> handler)
         {
-            ((IEventManager)m_EventManager).Unsubscribe(id, handler);
+            m_EventManager.Unsubscribe(id, handler);
         }
 
         protected override void ComponentInitialized()
@@ -68,7 +68,7 @@ namespace GF.EventSystem
         {
             base.ComponentUpdate(elapseSeconds, realElapseSeconds);
 
-            m_EventManager.Update(Time.deltaTime, Time.unscaledDeltaTime);
+            ((EventManager)m_EventManager).Update(Time.deltaTime, Time.unscaledDeltaTime);
         }
 
     }
