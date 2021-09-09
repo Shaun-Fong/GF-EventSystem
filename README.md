@@ -50,19 +50,142 @@ And your **GF.EventSystem.asmdef** should look like this
 
 ## Usage
 
-You can found example in **Test** folder，drag **GFEventSystem** prefab in your scene which in Prefabs folder ，then run，you should see the log `Test` in console window.
+你可以在 `~Example` 目录找到演示内容，拖拽在Prefabs目录的 `GFFsmSystem` 预制体到你的场景内 ，然后运行，你应该可以看到如下的打印日志内容
+
+`Stand State Init`
+
+`Walk State Init`
+
+`Stand State Enter`
+
+`Stand State Leave`
+
+`Walk State Enter`
+
+
 
 ```
-GFEventSystemComponent.Instance.Subscribe(EventId, EventHandler);
-//Subscribe Event
-```
+public class StandState : FsmState<Actor>
+{
+    protected override void OnInit(IFsm<Actor> fsm)
+    {
+        base.OnInit(fsm);
+        // 状态初始化
+        Debug.Log("Stand State Init.");
+    }
 
-```
-GFEventSystemComponent.Instance.Fire(gameObject, GameEventArgs);
-//This operation is thread safe. That means even if it is not thrown in the main thread, the event handler can be called back in the main thread, but the event will be called in the next frame.
-```
+    protected override void OnDestroy(IFsm<Actor> fsm)
+    {
+        base.OnDestroy(fsm);
+        // 状态销毁
+        Debug.Log("Stand State Destroy.");
+    }
 
-```
-GFEventSystemComponent.Instancet.FireNow(this, e);
-//This operation is thread safe.The event will be called immediately.
+    protected override void OnEnter(IFsm<Actor> fsm)
+    {
+        base.OnEnter(fsm);
+        // 状态进入
+        Debug.Log("Stand State Enter");
+
+        // 改变状态
+        ChangeState<WalkState>(fsm);
+    }
+
+    protected override void OnLeave(IFsm<Actor> fsm, bool isShutdown)
+    {
+        base.OnLeave(fsm, isShutdown);
+
+        // 离开状态
+        Debug.Log("Stand State Leave");
+    }
+
+    protected override void OnUpdate(IFsm<Actor> fsm, float elapseSeconds, float realElapseSeconds)
+    {
+        base.OnUpdate(fsm, elapseSeconds, realElapseSeconds);
+
+        //Debug.Log("Stand State Update");
+    }
+}
+
+
+
+public class WalkState : FsmState<Actor>
+{
+    protected override void OnInit(IFsm<Actor> fsm)
+    {
+        base.OnInit(fsm);
+
+        Debug.Log("Walk State Init.");
+    }
+
+    protected override void OnDestroy(IFsm<Actor> fsm)
+    {
+        base.OnDestroy(fsm);
+
+        Debug.Log("Walk State Destroy.");
+    }
+
+    protected override void OnEnter(IFsm<Actor> fsm)
+    {
+        base.OnEnter(fsm);
+
+        Debug.Log("Walk State Enter");
+    }
+
+    protected override void OnLeave(IFsm<Actor> fsm, bool isShutdown)
+    {
+        base.OnLeave(fsm, isShutdown);
+
+        Debug.Log("Walk State Leave");
+    }
+
+    protected override void OnUpdate(IFsm<Actor> fsm, float elapseSeconds, float realElapseSeconds)
+    {
+        base.OnUpdate(fsm, elapseSeconds, realElapseSeconds);
+
+        //Debug.Log("Walk State Update");
+    }
+}
+
+public class Actor
+{
+    private IFsm<Actor> m_Fsm = null;
+
+    private StandState m_StandState;
+    private WalkState m_WalkState;
+
+    public Actor(FsmComponent fsm)
+    {
+        // 实例化状态
+        m_StandState = new StandState();
+        m_WalkState = new WalkState();
+
+        // 创建Fsm并添加状态
+        m_Fsm = fsm.CreateFsm("ActorFsm", this, m_StandState, m_WalkState);
+    }
+
+    public void StartState()
+    {
+        // 启用状态机
+        m_Fsm.Start(m_StandState.GetType());
+    }
+}
+
+public class GFFsmTest : MonoBehaviour
+{
+
+    private FsmComponent _mFsmComponent;
+
+    private Actor _mActor;
+
+    private void Start()
+    {
+        _mFsmComponent = GetComponent<FsmComponent>();
+
+        _mActor = new Actor(_mFsmComponent);
+
+        _mActor.StartState();
+
+    }
+}
 ```
