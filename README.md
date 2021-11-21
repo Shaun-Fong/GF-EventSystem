@@ -50,7 +50,7 @@ And your **GF.EventSystem.asmdef** should look like this
 
 ## Usage
 
-你可以在 `~Example` 目录找到演示内容，拖拽在Prefabs目录的 `GFFsmSystem` 预制体到你的场景内 ，然后运行，你应该可以看到如下的打印日志内容
+You can found example in `~Example` folder，go Prefabs folder and drag `GFFsmSystem` prefab into your scene ，hit play, you should see console print logs.
 
 `Stand State Init`
 
@@ -70,24 +70,24 @@ public class StandState : FsmState<Actor>
     protected override void OnInit(IFsm<Actor> fsm)
     {
         base.OnInit(fsm);
-        // 状态初始化
+        // State initialize
         Debug.Log("Stand State Init.");
     }
 
     protected override void OnDestroy(IFsm<Actor> fsm)
     {
         base.OnDestroy(fsm);
-        // 状态销毁
+        // State destroy
         Debug.Log("Stand State Destroy.");
     }
 
     protected override void OnEnter(IFsm<Actor> fsm)
     {
         base.OnEnter(fsm);
-        // 状态进入
+        // State enter
         Debug.Log("Stand State Enter");
 
-        // 改变状态
+        // State change
         ChangeState<WalkState>(fsm);
     }
 
@@ -95,7 +95,7 @@ public class StandState : FsmState<Actor>
     {
         base.OnLeave(fsm, isShutdown);
 
-        // 离开状态
+        // State leave
         Debug.Log("Stand State Leave");
     }
 
@@ -156,17 +156,17 @@ public class Actor
 
     public Actor(FsmComponent fsm)
     {
-        // 实例化状态
+        // Create State
         m_StandState = new StandState();
         m_WalkState = new WalkState();
 
-        // 创建Fsm并添加状态
+        // Create Fsm and add states
         m_Fsm = fsm.CreateFsm("ActorFsm", this, m_StandState, m_WalkState);
     }
 
     public void StartState()
     {
-        // 启用状态机
+        // Start fsm
         m_Fsm.Start(m_StandState.GetType());
     }
 }
